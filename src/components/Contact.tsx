@@ -35,18 +35,53 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message Sent!",
-        description: "We'll get back to you as soon as possible.",
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "d461cff7-449f-437c-b26c-4bbd7055220c",
+          name: formData.get("name"),
+          email: formData.get("email"),
+          subject: formData.get("subject"),
+          message: formData.get("message"),
+        }),
       });
+
+      const result = await response.json();
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description: "We'll get back to you as soon as possible.",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Error!",
+          description: result.message || "Something went wrong. Try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Error!",
+        description: "Unable to send your message. Try again later.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -60,11 +95,14 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Get In <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Touch</span>
+            Get In{" "}
+            <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Touch
+            </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ready to start your next project? Let's discuss how we can help bring
-            your vision to life.
+            Ready to start your next project? Let's discuss how we can help
+            bring your vision to life.
           </p>
         </motion.div>
 
@@ -79,8 +117,8 @@ const Contact = () => {
             <div>
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               <p className="text-muted-foreground mb-8">
-                Have a question or want to work together? We'd love to hear from you.
-                Reach out through any of the channels below.
+                Have a question or want to work together? We'd love to hear from
+                you. Reach out through any of the channels below.
               </p>
             </div>
 
@@ -92,7 +130,9 @@ const Contact = () => {
                     key={item.label}
                     href={item.link}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    animate={
+                      isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                    }
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                     className="flex items-start gap-4 p-4 rounded-lg hover:bg-secondary/50 transition-colors group"
                   >
@@ -100,8 +140,12 @@ const Contact = () => {
                       <Icon className="h-5 w-5 text-white" />
                     </div>
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">{item.label}</div>
-                      <div className="font-medium text-foreground">{item.value}</div>
+                      <div className="text-sm text-muted-foreground mb-1">
+                        {item.label}
+                      </div>
+                      <div className="font-medium text-foreground">
+                        {item.value}
+                      </div>
                     </div>
                   </motion.a>
                 );
@@ -109,9 +153,12 @@ const Contact = () => {
             </div>
 
             <Card className="p-6 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary/20">
-              <h4 className="font-semibold mb-2 text-foreground">Working Hours</h4>
+              <h4 className="font-semibold mb-2 text-foreground">
+                Working Hours
+              </h4>
               <p className="text-sm text-muted-foreground">
-                Monday - Friday: 9:00 AM - 6:00 PM PST<br />
+                Monday - Friday: 9:00 AM - 6:00 PM PST
+                <br />
                 Saturday - Sunday: Closed
               </p>
             </Card>
@@ -127,24 +174,32 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium mb-2 text-foreground"
+                    >
                       Full Name
                     </label>
                     <Input
                       id="name"
-                      placeholder="your name"
+                      name="name"
+                      placeholder="Your name"
                       required
                       className="w-full"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium mb-2 text-foreground"
+                    >
                       Email Address
                     </label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
-                      placeholder="your email"
+                      placeholder="Your email"
                       required
                       className="w-full"
                     />
@@ -152,11 +207,15 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium mb-2 text-foreground">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium mb-2 text-foreground"
+                  >
                     Subject
                   </label>
                   <Input
                     id="subject"
+                    name="subject"
                     placeholder="How can we help you?"
                     required
                     className="w-full"
@@ -164,11 +223,15 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium mb-2 text-foreground"
+                  >
                     Message
                   </label>
                   <Textarea
                     id="message"
+                    name="message"
                     placeholder="Tell us about your project..."
                     required
                     rows={6}
