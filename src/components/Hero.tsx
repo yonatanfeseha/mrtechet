@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
-import heroGif from "@/assets/hero.gif"; // <-- your GIF file
+import heroGif from "@/assets/hero.png"
 
 const Hero = () => {
   return (
