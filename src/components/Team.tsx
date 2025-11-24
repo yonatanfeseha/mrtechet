@@ -2,22 +2,15 @@ import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
 import yoni from "../assets/yoni.jpg";
 import dawa from "../assets/dawa.jpg";
+import yo from "../assets/yo.jpg";
 
 const Team = () => {
   const teamMembers = [
     {
-      name: "Yonatan Feseha",
-      role: "Fullstack Developer",
-      image: yoni,
-      bio: "Specializing in backend development and scalable solutions",
-      linkedin: "https://www.linkedin.com/in/yonatan-feseha-987229259/",
-      email: "mailto:yonatanfeseha@gmail.com",
-    },
-    {
-      name: "Dawit Tesfaye",
-      role: "UI/UX Specialist",
+      name: "Fiker Behailu",
+      role: "project Manager",
       image: dawa,
-      bio: "Crafting beautiful user experiences and pixel-perfect interfaces",
+      bio: "Leads projects to successful completion on time, within budget, and meeting goals.",
       linkedin: "https://www.linkedin.com/in/dawit-tesfaye-9ab23429b",
       email: "mailto:tesfayedawit22090582@gmail.com",
     },
@@ -31,22 +24,31 @@ const Team = () => {
     },
     {
       name: "Dawit Tesfaye",
-      role: "UI/UX Specialist",
+      role: "Software Engineer",
       image: dawa,
-      bio: "Crafting beautiful user experiences and pixel-perfect interfaces",
+      bio: "Building robust and efficient software solutions",
       linkedin: "https://www.linkedin.com/in/dawit-tesfaye-9ab23429b",
       email: "mailto:tesfayedawit22090582@gmail.com",
     },
     {
-      name: "Yonatan Feseha",
-      role: "Fullstack Developer",
+      name: "Yonatan worku",
+      role: "Production",
+      image: yo,
+      bio: "movies, documentary, Event Organizing and Production",
+      linkedin: "https://www.linkedin.com/in/yonatan-feseha-987229259/",
+      email: "mailto:yonatanfeseha@gmail.com",
+    },
+
+    {
+      name: "assrat denboba",
+      role: "Graphic Designer",
       image: yoni,
-      bio: "Specializing in backend development and scalable solutions",
+      bio: "specializing in video editing and motion graphic",
       linkedin: "https://www.linkedin.com/in/yonatan-feseha-987229259/",
       email: "mailto:yonatanfeseha@gmail.com",
     },
     {
-      name: "Dawit Tesfaye",
+      name: "fikadu asrat",
       role: "UI/UX Specialist",
       image: dawa,
       bio: "Crafting beautiful user experiences and pixel-perfect interfaces",
