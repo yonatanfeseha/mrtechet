@@ -1,9 +1,14 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { ExternalLink } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
+import ras1 from "../assets/ras1.jpg";
+import ras2 from "../assets/ras2.jpg";
+import ras3 from "../assets/ras3.jpg";
+import ras4 from "../assets/ras4.jpg";
+import nfc from "../assets/NFC.png";
+import menu from "../assets/menu.webp";
 
 const projects = [
   {
@@ -11,34 +16,26 @@ const projects = [
     category: "Mr Menu",
     description:
       "Digital menu and ordering system with kitchen management integration.",
-    tags: ["React", "Node.js", "QR Codes", "Real-time"],
-    color: "from-orange-500 to-red-500",
+    image: menu,
   },
   {
     title: "Digital Business Cards",
     category: "Mr Card",
     description:
       "NFC-enabled digital business card platform with contact management.",
-    tags: ["React", "NFC", "Analytics"],
-    color: "from-indigo-500 to-blue-500",
+    image: nfc,
   },
   {
-    title: "Gym Mannagment System",
+    title: "Gym Management System",
     category: "Enterprise web app",
     description:
       "Comprehensive gym management system with member tracking and scheduling.",
-    tags: ["React", "Node.js", "Firebase"],
-    color: "from-yellow-500 to-orange-500",
+    images: [ras1, ras2, ras3, ras4],
   },
 ];
 
-const ProjectCard = ({
-  project,
-  index,
-}: {
-  project: (typeof projects)[0];
-  index: number;
-}) => {
+// Static project card
+const ProjectCard = ({ project, index }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -49,51 +46,77 @@ const ProjectCard = ({
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <Card className="group relative overflow-hidden border-2 hover:border-primary transition-all duration-300 hover-lift bg-card h-full cursor-pointer">
-        {/* Gradient Header */}
-        <div className={`h-2 bg-gradient-to-r ${project.color}`} />
-
-        {/* Animated Background */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+      <Card className="relative overflow-hidden h-72 rounded-xl cursor-pointer">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-contain"
         />
 
-        <div className="p-6 relative z-10">
-          {/* Category Badge */}
-          <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary mb-4">
-            {project.category}
-          </span>
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40" />
 
-          {/* Title */}
-          <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-            {project.title}
-          </h3>
-
-          {/* Description */}
-          <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-            {project.description}
-          </p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-2 py-1 text-xs rounded bg-secondary text-secondary-foreground"
-              >
-                {tag}
-              </span>
-            ))}
+        {/* Static content */}
+        <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
+          <div>
+            <h3 className="text-xl font-bold mb-2 text-black drop-shadow-lg">
+              {project.title}
+            </h3>
           </div>
-
-          {/* View Link */}
-          <div className="flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all">
-            <span>View Case Study</span>
-            <ExternalLink className="h-4 w-4" />
+          <div>
+            <p className="text-sm leading-relaxed mb-3 text-white drop-shadow-[0_0_15px_black]">
+              {project.description}
+            </p>
+            <div className="flex items-center gap-2 font-medium text-white drop-shadow-[0_0_15px_black]">
+              <span>View Case Study</span>
+              <ExternalLink className="h-4 w-4" />
+            </div>
           </div>
         </div>
       </Card>
     </motion.div>
+  );
+};
+
+// Auto-slider card for Gym Management System
+const GymSlider = ({ project }) => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % project.images.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [project.images.length]);
+
+  return (
+    <Card className="relative h-72 overflow-hidden rounded-xl">
+      <img
+        src={project.images[index]}
+        alt={project.title}
+        className="w-full h-full object-contain transition-transform duration-500"
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40" />
+
+      <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
+        <div>
+          <h3 className="text-xl font-bold mb-2 text-black drop-shadow-lg">
+            {project.title}
+          </h3>
+        </div>
+        <div>
+          <p className="text-sm mb-3 text-white drop-shadow-[0_0_15px_black]">
+            {project.description}
+          </p>
+
+          <div className="flex items-center gap-2 font-medium text-white drop-shadow-[0_0_15px_black]">
+            <span>View Case Study</span>
+            <ExternalLink className="h-4 w-4" />
+          </div>
+        </div>
+      </div>
+    </Card>
   );
 };
 
@@ -112,10 +135,7 @@ const Portfolio = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Featured{" "}
-            <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Projects
-            </span>
+            Featured <span className="text-black">Projects</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             Explore our portfolio of successful projects that showcase our
@@ -124,9 +144,17 @@ const Portfolio = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
-          ))}
+          {projects.map((project, index) =>
+            project.images ? (
+              <GymSlider key={project.title} project={project} />
+            ) : (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={index}
+              />
+            )
+          )}
         </div>
 
         <motion.div
