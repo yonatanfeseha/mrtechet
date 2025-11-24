@@ -18,13 +18,13 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
+    value: "+251 98 300 7657",
     link: "tel:+15551234567",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "San Francisco, CA",
+    value: "Addis Ababa, Ethiopia",
     link: "#",
   },
 ];
@@ -132,7 +132,7 @@ const Contact = () => {
                     </label>
                     <Input
                       id="name"
-                      placeholder="John Doe"
+                      placeholder="your name"
                       required
                       className="w-full"
                     />
@@ -144,7 +144,7 @@ const Contact = () => {
                     <Input
                       id="email"
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder="your email"
                       required
                       className="w-full"
                     />
