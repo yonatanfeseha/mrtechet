@@ -10,7 +10,8 @@ const services = [
     icon: Code2,
     name: "Mr Tech",
     tagline: "Enterprise Solutions",
-    description: "Custom software development, web applications, and digital transformation services tailored to your business needs.",
+    description:
+      "Custom software development, web applications, and digital transformation services tailored to your business needs.",
     features: [
       "Custom Software Development",
       "Web & Mobile Applications",
@@ -24,7 +25,8 @@ const services = [
     icon: CreditCard,
     name: "Mr Card",
     tagline: "Digital Card Solutions",
-    description: "Modern digital business card solutions that make networking seamless, professional, and eco-friendly.",
+    description:
+      "Modern digital business card solutions that make networking seamless, professional, and eco-friendly.",
     features: [
       "Smart Digital Business Cards",
       "NFC & QR Code Technology",
@@ -38,7 +40,8 @@ const services = [
     icon: Menu,
     name: "Mr Menu",
     tagline: "Restaurant Tech",
-    description: "Revolutionary digital menu systems and restaurant management solutions for the modern dining experience.",
+    description:
+      "Revolutionary digital menu systems and restaurant management solutions for the modern dining experience.",
     features: [
       "Interactive Digital Menus",
       "QR Code Ordering",
@@ -50,7 +53,7 @@ const services = [
   },
 ];
 
-const ServiceCard = ({ service, index }: { service: typeof services[0]; index: number }) => {
+const ServiceCard = ({ service, index }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -65,11 +68,15 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
     >
       <Card className="group relative overflow-hidden border-2 hover:border-primary transition-all duration-300 hover-lift bg-card h-full">
         {/* Gradient Background on Hover */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-        
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+        />
+
         <div className="p-8 relative z-10">
           {/* Icon */}
-          <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${service.gradient} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+          <div
+            className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${service.gradient} mb-6 group-hover:scale-110 transition-transform duration-300`}
+          >
             <Icon className="h-8 w-8 text-white" />
           </div>
 
@@ -90,7 +97,9 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
           <ul className="space-y-3 mb-6">
             {service.features.map((feature, idx) => (
               <li key={idx} className="flex items-start gap-2 text-sm">
-                <div className={`mt-1 h-1.5 w-1.5 rounded-full bg-gradient-to-br ${service.gradient} flex-shrink-0`} />
+                <div
+                  className={`mt-1 h-1.5 w-1.5 rounded-full bg-gradient-to-br ${service.gradient} flex-shrink-0`}
+                />
                 <span className="text-foreground">{feature}</span>
               </li>
             ))}
@@ -101,7 +110,22 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
             variant="ghost"
             className="group/btn px-0 text-primary hover:text-primary-dark hover:bg-transparent"
           >
-            Learn More
+            <a
+              href={
+                service.name === "Mr Card"
+                  ? "https://mrcardet.netlify.app/"
+                  : undefined
+              }
+              target={service.name === "Mr Card" ? "_blank" : undefined}
+              onClick={(e) => {
+                if (service.name !== "Mr Card") {
+                  e.preventDefault(); // stops any action for Mr Tech & Mr Menu
+                }
+              }}
+            >
+              Learn More
+            </a>
+
             <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
           </Button>
         </div>
@@ -125,11 +149,14 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Our <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Services</span>
+            Our{" "}
+            <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Services
+            </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Three powerful brands, one mission: delivering innovative technology solutions
-            that drive your business forward.
+            Three powerful brands, one mission: delivering innovative technology
+            solutions that drive your business forward.
           </p>
         </motion.div>
 

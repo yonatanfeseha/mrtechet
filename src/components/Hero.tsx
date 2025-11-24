@@ -8,21 +8,24 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroBg} 
-          alt="Hero Background" 
+        <img
+          src={heroBg}
+          alt="Hero Background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-navy/95 via-primary-dark/90 to-navy/95" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       {/* Animated Grid Pattern */}
       <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px),
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px),
                            linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }} />
+            backgroundSize: "50px 50px",
+          }}
+        />
       </div>
 
       {/* Content */}
@@ -58,9 +61,9 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            Transforming ideas into powerful digital solutions. We specialize in 
-            custom software development, innovative web applications, and cutting-edge 
-            technology products.
+            Transforming ideas into powerful digital solutions. We specialize in
+            custom software development, innovative web applications, and
+            cutting-edge technology products.
           </motion.p>
 
           <motion.div
