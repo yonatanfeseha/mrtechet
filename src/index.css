@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 213 100% 10%;
+    
+    /* Tech Blue - Primary brand color */
+    --primary: 210 100% 43%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 210 100% 85%;
+    --primary-dark: 213 100% 10%;
+    
+    /* Navy - Dark variant */
+    --navy: 220 45% 15%;
+    --navy-foreground: 0 0% 100%;
+    
+    /* Coral Orange - Accent for CTAs */
+    --accent: 14 100% 60%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 14 100% 50%;
+    
+    /* Secondary UI */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 213 100% 10%;
+    
+    /* Muted elements */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    
+    /* Card components */
+    --card: 0 0% 100%;
+    --card-foreground: 213 100% 10%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 100% 10%;
+    
+    /* Borders and inputs */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 210 100% 43%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 43%), hsl(195 100% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 45% 15%), hsl(210 100% 20%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(210 100% 43% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(210 100% 43% / 0.1);
+    --shadow-lg: 0 10px 30px -10px hsl(210 100% 43% / 0.2);
+    --shadow-glow: 0 0 40px hsl(210 100% 70% / 0.3);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease-out;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 45% 8%;
+    --foreground: 0 0% 98%;
+    
+    --primary: 210 100% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 210 100% 70%;
+    --primary-dark: 220 45% 15%;
+    
+    --navy: 220 45% 15%;
+    --navy-foreground: 0 0% 100%;
+    
+    --accent: 14 100% 60%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 14 100% 50%;
+    
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+    
+    --card: 220 45% 12%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 220 45% 12%;
+    --popover-foreground: 0 0% 98%;
+    
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 210 100% 55%;
+    
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 55%), hsl(195 100% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 45% 8%), hsl(220 45% 15%));
+    --shadow-glow: 0 0 40px hsl(210 100% 50% / 0.4);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
