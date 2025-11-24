@@ -1,109 +1,143 @@
 import { motion } from "framer-motion";
 import { Linkedin, Mail } from "lucide-react";
+import yoni from "../assets/yoni.jpg";
+import dawa from "../assets/dawa.jpg";
 
 const Team = () => {
   const teamMembers = [
     {
-      name: "Sarah Johnson",
-      role: "CEO & Founder",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
-      bio: "15+ years in tech leadership",
-      linkedin: "#",
-      email: "sarah@mrtech.com",
+      name: "Yonatan Feseha",
+      role: "Fullstack Developer",
+      image: yoni,
+      bio: "Specializing in backend development and scalable solutions",
+      linkedin: "https://www.linkedin.com/in/yonatan-feseha-987229259/",
+      email: "mailto:yonatanfeseha@gmail.com",
     },
     {
-      name: "Michael Chen",
-      role: "CTO",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-      bio: "Expert in scalable architecture",
-      linkedin: "#",
-      email: "michael@mrtech.com",
+      name: "Dawit Tesfaye",
+      role: "UI/UX Specialist",
+      image: dawa,
+      bio: "Crafting beautiful user experiences and pixel-perfect interfaces",
+      linkedin: "https://www.linkedin.com/in/dawit-tesfaye-9ab23429b",
+      email: "mailto:tesfayedawit22090582@gmail.com",
     },
     {
-      name: "Emily Rodriguez",
-      role: "Head of Design",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
-      bio: "Award-winning UX designer",
-      linkedin: "#",
-      email: "emily@mrtech.com",
+      name: "Yonatan Feseha",
+      role: "Fullstack Developer",
+      image: yoni,
+      bio: "Specializing in backend development and scalable solutions",
+      linkedin: "https://www.linkedin.com/in/yonatan-feseha-987229259/",
+      email: "mailto:yonatanfeseha@gmail.com",
     },
     {
-      name: "David Park",
-      role: "Lead Developer",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-      bio: "Full-stack development specialist",
-      linkedin: "#",
-      email: "david@mrtech.com",
+      name: "Dawit Tesfaye",
+      role: "UI/UX Specialist",
+      image: dawa,
+      bio: "Crafting beautiful user experiences and pixel-perfect interfaces",
+      linkedin: "https://www.linkedin.com/in/dawit-tesfaye-9ab23429b",
+      email: "mailto:tesfayedawit22090582@gmail.com",
+    },
+    {
+      name: "Yonatan Feseha",
+      role: "Fullstack Developer",
+      image: yoni,
+      bio: "Specializing in backend development and scalable solutions",
+      linkedin: "https://www.linkedin.com/in/yonatan-feseha-987229259/",
+      email: "mailto:yonatanfeseha@gmail.com",
+    },
+    {
+      name: "Dawit Tesfaye",
+      role: "UI/UX Specialist",
+      image: dawa,
+      bio: "Crafting beautiful user experiences and pixel-perfect interfaces",
+      linkedin: "https://www.linkedin.com/in/dawit-tesfaye-9ab23429b",
+      email: "mailto:tesfayedawit22090582@gmail.com",
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 15, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 120, damping: 15 } },
+    hover: { y: -4, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } },
+  };
+
   return (
-    <section id="team" className="py-24 bg-background">
-      <div className="container-custom">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Meet Our <span className="text-gradient">Team</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Talented professionals dedicated to bringing your vision to life
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teamMembers.map((member, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="relative overflow-hidden rounded-2xl bg-card border border-border hover:border-primary transition-all duration-300 hover-lift">
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-accent font-semibold mb-2">{member.role}</p>
-                  <p className="text-sm text-muted-foreground mb-4">{member.bio}</p>
-
-                  <div className="flex gap-3">
-                    <a
-                      href={member.linkedin}
-                      className="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
-                      aria-label="LinkedIn"
-                    >
-                      <Linkedin className="h-4 w-4" />
-                    </a>
-                    <a
-                      href={`mailto:${member.email}`}
-                      className="p-2 rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
-                      aria-label="Email"
-                    >
-                      <Mail className="h-4 w-4" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+    <section id="team" className="py-16 bg-background relative">
+      <div className="container-custom text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+          Meet Our <span className="text-gradient bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Dream Team</span>
+        </h2>
+        <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+          Passionate innovators transforming ideas into extraordinary digital experiences
+        </p>
       </div>
+
+      {/* Flex row grid */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="flex flex-wrap justify-center gap-2"
+      >
+        {teamMembers.map((member, index) => (
+          <motion.div
+            key={`${member.name}-${index}`}
+            variants={cardVariants}
+            whileHover="hover"
+            className="group w-70 relative cursor-pointer"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+              {/* Image */}
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-72 object-cover"
+              />
+
+              {/* Pre-hover Name/Role Overlay */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-sm text-center py-1 px-1 transition-all duration-300">
+                <h3 className="text-white text-sm font-semibold">{member.name}</h3>
+                <p className="text-xs text-primary uppercase">{member.role}</p>
+              </div>
+
+              {/* Hover Overlay */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-3 gap-1 text-white transition-opacity duration-300"
+              >
+                <h3 className="text-sm font-semibold">{member.name}</h3>
+                <p className="text-xs text-primary font-medium uppercase">{member.role}</p>
+                <p className="text-xs text-gray-200">{member.bio}</p>
+                <div className="flex gap-1 mt-1">
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 py-1 px-2 bg-primary/20 hover:bg-primary hover:text-white rounded-md text-xs transition"
+                  >
+                    <Linkedin className="w-3 h-3" />
+                    LinkedIn
+                  </a>
+                  <a
+                    href={member.email}
+                    className="flex items-center gap-1 py-1 px-2 bg-purple-600/20 hover:bg-purple-600 hover:text-white rounded-md text-xs transition"
+                  >
+                    <Mail className="w-3 h-3" />
+                    Email
+                  </a>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 };
