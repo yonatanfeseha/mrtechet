@@ -57,23 +57,39 @@ const Team = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+    },
   };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 15, scale: 0.95 },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 120, damping: 15 } },
-    hover: { y: -4, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { type: "spring", stiffness: 120, damping: 15 },
+    },
+    hover: {
+      y: -4,
+      scale: 1.02,
+      transition: { type: "spring", stiffness: 300, damping: 20 },
+    },
   };
 
   return (
     <section id="team" className="py-16 bg-background relative">
       <div className="container-custom text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-          Meet Our <span className="text-gradient bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Dream Team</span>
+          Meet Our{" "}
+          <span className="text-gradient bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+            Dream Team
+          </span>
         </h2>
         <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-          Passionate innovators transforming ideas into extraordinary digital experiences
+          Passionate innovators transforming ideas into extraordinary digital
+          experiences
         </p>
       </div>
 
@@ -102,8 +118,10 @@ const Team = () => {
 
               {/* Pre-hover Name/Role Overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-sm text-center py-1 px-1 transition-all duration-300">
-                <h3 className="text-white text-sm font-semibold">{member.name}</h3>
-                <p className="text-xs text-primary uppercase">{member.role}</p>
+                <h3 className="text-white text-sm font-semibold">
+                  {member.name}
+                </h3>
+                <p className="text-xs text-accent uppercase">{member.role}</p>
               </div>
 
               {/* Hover Overlay */}
@@ -113,7 +131,9 @@ const Team = () => {
                 className="absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-3 gap-1 text-white transition-opacity duration-300"
               >
                 <h3 className="text-sm font-semibold">{member.name}</h3>
-                <p className="text-xs text-primary font-medium uppercase">{member.role}</p>
+                <p className="text-xs text-accent font-medium uppercase">
+                  {member.role}
+                </p>
                 <p className="text-xs text-gray-200">{member.bio}</p>
                 <div className="flex gap-1 mt-1">
                   <a
