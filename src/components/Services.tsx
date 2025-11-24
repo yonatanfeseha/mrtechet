@@ -106,28 +106,18 @@ const ServiceCard = ({ service, index }) => {
           </ul>
 
           {/* CTA */}
-          <Button
-            variant="ghost"
-            className="group/btn px-0 text-primary hover:text-primary-dark hover:bg-transparent"
-          >
-            <a
-              href={
-                service.name === "Mr Card"
-                  ? "https://mrcardet.netlify.app/"
-                  : undefined
-              }
-              target={service.name === "Mr Card" ? "_blank" : undefined}
-              onClick={(e) => {
-                if (service.name !== "Mr Card") {
-                  e.preventDefault(); // stops any action for Mr Tech & Mr Menu
-                }
-              }}
+          {/* CTA - Only show for Mr Card */}
+          {service.name === "Mr Card" && (
+            <Button
+              variant="default"
+              className="px-4 py-2 bg-primary text-white hover:bg-primary-dark rounded-lg"
+              asChild
             >
-              Learn More
-            </a>
-
-            <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-          </Button>
+              <a href="https://mrcardet.netlify.app/" target="_blank">
+                Get Started
+              </a>
+            </Button>
+          )}
         </div>
       </Card>
     </motion.div>

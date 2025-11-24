@@ -7,50 +7,38 @@ import { Button } from "@/components/ui/button";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    category: "Web Application",
-    description: "Full-stack e-commerce solution with payment integration and inventory management.",
-    tags: ["React", "Node.js", "Stripe"],
-    color: "from-blue-500 to-cyan-500",
-  },
-  {
-    title: "Healthcare App",
-    category: "Mobile Application",
-    description: "Patient management system with telemedicine capabilities and appointment scheduling.",
-    tags: ["React Native", "Firebase", "WebRTC"],
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    title: "FinTech Dashboard",
-    category: "SaaS Platform",
-    description: "Real-time financial analytics dashboard with data visualization and reporting.",
-    tags: ["Vue.js", "D3.js", "PostgreSQL"],
-    color: "from-emerald-500 to-teal-500",
-  },
-  {
     title: "Smart Restaurant System",
     category: "Mr Menu",
-    description: "Digital menu and ordering system with kitchen management integration.",
-    tags: ["Next.js", "QR Codes", "Real-time"],
+    description:
+      "Digital menu and ordering system with kitchen management integration.",
+    tags: ["React", "Node.js", "QR Codes", "Real-time"],
     color: "from-orange-500 to-red-500",
   },
   {
     title: "Digital Business Cards",
     category: "Mr Card",
-    description: "NFC-enabled digital business card platform with contact management.",
+    description:
+      "NFC-enabled digital business card platform with contact management.",
     tags: ["React", "NFC", "Analytics"],
     color: "from-indigo-500 to-blue-500",
   },
   {
-    title: "AI-Powered CRM",
-    category: "Enterprise Software",
-    description: "Customer relationship management system with AI-driven insights and automation.",
-    tags: ["Python", "TensorFlow", "MongoDB"],
+    title: "Gym Mannagment System",
+    category: "Enterprise web app",
+    description:
+      "Comprehensive gym management system with member tracking and scheduling.",
+    tags: ["React", "Node.js", "Firebase"],
     color: "from-yellow-500 to-orange-500",
   },
 ];
 
-const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+const ProjectCard = ({
+  project,
+  index,
+}: {
+  project: (typeof projects)[0];
+  index: number;
+}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -64,10 +52,12 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
       <Card className="group relative overflow-hidden border-2 hover:border-primary transition-all duration-300 hover-lift bg-card h-full cursor-pointer">
         {/* Gradient Header */}
         <div className={`h-2 bg-gradient-to-r ${project.color}`} />
-        
+
         {/* Animated Background */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-        
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+        />
+
         <div className="p-6 relative z-10">
           {/* Category Badge */}
           <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary mb-4">
@@ -122,11 +112,14 @@ const Portfolio = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Projects</span>
+            Featured{" "}
+            <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Projects
+            </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Explore our portfolio of successful projects that showcase our expertise
-            in delivering innovative technology solutions.
+            Explore our portfolio of successful projects that showcase our
+            expertise in delivering innovative technology solutions.
           </p>
         </motion.div>
 
