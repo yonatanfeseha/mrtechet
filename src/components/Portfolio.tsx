@@ -163,13 +163,13 @@ const Portfolio = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-center"
         >
-          <Button
+          {/* <Button
             size="lg"
             variant="outline"
             className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
           >
             View All Projects
-          </Button>
+          </Button> */}
         </motion.div>
       </div>
     </section>

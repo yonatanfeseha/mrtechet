@@ -3,13 +3,15 @@ import { Linkedin, Mail } from "lucide-react";
 import yoni from "../assets/yoni.jpg";
 import dawa from "../assets/dawa.jpg";
 import yo from "../assets/yo.jpg";
+import cj from "../assets/cj.jpg";
+import zola from "../assets/zola.jpg";
 
 const Team = () => {
   const teamMembers = [
     {
       name: "Fiker Behailu",
       role: "project Manager",
-      image: dawa,
+      image: cj,
       bio: "Leads projects to successful completion on time, within budget, and meeting goals.",
       linkedin: "https://www.linkedin.com/in/dawit-tesfaye-9ab23429b",
       email: "mailto:tesfayedawit22090582@gmail.com",
@@ -40,20 +42,12 @@ const Team = () => {
     },
 
     {
-      name: "assrat denboba",
+      name: "Zelalem desta",
       role: "Graphic Designer",
-      image: yoni,
+      image: zola,
       bio: "specializing in video editing and motion graphic",
       linkedin: "https://www.linkedin.com/in/yonatan-feseha-987229259/",
       email: "mailto:yonatanfeseha@gmail.com",
-    },
-    {
-      name: "fikadu asrat",
-      role: "UI/UX Specialist",
-      image: dawa,
-      bio: "Crafting beautiful user experiences and pixel-perfect interfaces",
-      linkedin: "https://www.linkedin.com/in/dawit-tesfaye-9ab23429b",
-      email: "mailto:tesfayedawit22090582@gmail.com",
     },
   ];
 
@@ -110,13 +104,14 @@ const Team = () => {
             whileHover="hover"
             className="group w-70 relative cursor-pointer"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-              {/* Image */}
-              <img
-                src={member.image}
-                alt={member.name}
-                className="w-full h-72 object-cover"
-              />
+            <div className="w-80 rounded-2xl shadow-lg overflow-hidden">
+              <div className="w-full h-72 overflow-hidden">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
               {/* Pre-hover Name/Role Overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-sm text-center py-1 px-1 transition-all duration-300">
